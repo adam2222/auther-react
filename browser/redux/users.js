@@ -29,12 +29,12 @@ export default function reducer (users = [], action) {
 
     case REMOVE:
       return users
-        .filter(story => story.id !== action.id)
+        .filter(user => user.id !== action.id)
 
     
     case UPDATE:
       return users
-        .map(story => (
+        .map(user => (
           action.user.id === user.id ? action.user : user))
 
     default: 
