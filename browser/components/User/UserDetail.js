@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { connect } from'react-redux';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 import UserItem from './UserItem';
 import StoryItem from '../Story/StoryItem';
@@ -26,7 +26,7 @@ class UserDetail extends React.Component {
 			    </div>
 			    <ul className="list-group">
 			      <form className="list-group-item story-item" onSubmit={this.onSubmit}>
-			        <input 
+			        <input
 			        	name="title"
 			        	type="text"
               	className="form-like"
@@ -65,8 +65,8 @@ class UserDetail extends React.Component {
 
 const mapState = ({ users, stories }, ownProps) => {
   const param_id = Number(ownProps.params.id);
-  return { 
-    user:    _.find(users, user => user.id === param_id), 
+  return {
+    user:    _.find(users, user => user.id === param_id),
     stories
   }
 }

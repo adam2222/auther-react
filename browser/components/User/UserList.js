@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { connect } from'react-redux';
+import { connect } from 'react-redux';
 import { addUser } from '../../redux/users';
 import UserItem from './UserItem';
 
@@ -11,9 +11,9 @@ class UserList extends Component {
     super(props);
 
     this.state = {
-      name: '', 
-      email: '', 
-      phone: '' 
+      name: '',
+      email: '',
+      phone: ''
     };
 
     this.filterUser = this.filterUser.bind(this);
@@ -32,8 +32,8 @@ class UserList extends Component {
         <br />
         <br />
         <div className="user-list">
-        { 
-          this.props.users 
+        {
+          this.props.users
             .filter(this.filterUser)
             .map(user => <UserItem user={user} key={user.id} />)
         }
@@ -51,10 +51,10 @@ class UserList extends Component {
           </div>
           <div className="media-body">
             <h4 className="media-heading tucked">
-              <input 
+              <input
                 type="text"
                 placeholder="Jean Doe"
-                className="form-like" 
+                className="form-like"
                 onChange={e => this.setState({ name: e.target.value })}
               />
             </h4>
@@ -76,7 +76,7 @@ class UserList extends Component {
             </h5>
           </div>
         </div>
-      </div>  
+      </div>
     );
   }
 
@@ -85,8 +85,8 @@ class UserList extends Component {
     const emailMatch = new RegExp(this.state.email, 'i');
     const phoneMatch = new RegExp(this.state.phone, 'i');
 
-    return nameMatch.test(story.name) 
-        && emailMatch.test(story.email) 
+    return nameMatch.test(story.name)
+        && emailMatch.test(story.email)
         && phoneMatch.test(story.phone);
   }
 
@@ -96,14 +96,14 @@ class UserList extends Component {
       <div className="list-group-item min-content user-item">
         <form className="media" onSubmit={this.submit}>
           <div className="media-left media-middle icon-container">
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="glyphicon glyphicon-plus clickable">
             </button>
           </div>
           <div className="media-body">
             <h4 className="media-heading tucked">
-              <input 
+              <input
                 name="name"
                 type="text"
                 required
@@ -156,4 +156,3 @@ const mapState = ({ users }) => ({ users })
 const mapDispatch = { addUser }
 
 export default connect(mapState, mapDispatch)(UserList);
-
