@@ -37,12 +37,12 @@ app.post('/login', function (req, res, next) {
     where: req.body
   })
   .then(function (user) {
-  	console.log(user);
+  	// console.log(user);
     if (!user) {
       res.sendStatus(401);
     } else {
       req.session.userId = user.id;
-      console.log(user.id);
+      // console.log(user.id);
       res.sendStatus(204);
     }
   })

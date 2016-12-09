@@ -60,6 +60,9 @@ class Signup extends React.Component {
   onSignupSubmit(event) {
     const { message } = this.props;
     event.preventDefault();
+    const email = event.data.email.value;
+    const password = event.data.password.value;
+    const credentials = {email, password};
     console.log(`${message} isn't implemented yet`);
   }
 }
