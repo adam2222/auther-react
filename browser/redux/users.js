@@ -14,14 +14,15 @@ const init  = users => ({ type: INITIALIZE, users })
 const create = user  => ({ type: CREATE, user })
 const remove = id    => ({ type: REMOVE, id })
 const update = user  => ({ type: UPDATE, user })
+const LOGIN = user  => ({ type: UPDATE, user })
 
 
 /* ------------       REDUCER     ------------------ */
 
 export default function reducer (users = [], action) {
   switch (action.type) {
-    
-    case INITIALIZE: 
+
+    case INITIALIZE:
       return action.users
 
     case CREATE:
@@ -31,13 +32,13 @@ export default function reducer (users = [], action) {
       return users
         .filter(user => user.id !== action.id)
 
-    
+
     case UPDATE:
       return users
         .map(user => (
           action.user.id === user.id ? action.user : user))
 
-    default: 
+    default:
       return users;
   }
 }
