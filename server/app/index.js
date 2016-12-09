@@ -1,4 +1,4 @@
-'use strict'; 
+'use strict';
 
 var app = require('express')();
 var path = require('path');
@@ -11,8 +11,12 @@ app.use(require('./statics.middleware'));
 app.use('/api', require('../api/api.router'));
 
 var validFrontendRoutes = ['/', '/stories', '/users', '/stories/:id', '/users/:id', '/signup', '/login'];
+
 var indexPath = path.join(__dirname, '..', '..', 'browser', 'index.html');
+
 validFrontendRoutes.forEach(function (stateRoute) {
+  console.log('INDEXPATH', indexPath)
+
   app.get(stateRoute, function (req, res) {
     res.sendFile(indexPath);
   });
